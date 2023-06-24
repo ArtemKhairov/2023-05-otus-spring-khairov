@@ -15,10 +15,10 @@ public class ReaderServiceImpl implements ReaderService {
 
     @Override
     public void startRead() {
-        System.out.println("Start");
         List<Question> questions = quizService.getAllQuestions();
         for (Question question : questions) {
             printerService.print(question.getQuestion());
+            printerService.print(question.getAnswer().getAnswer());
         }
     }
 }
