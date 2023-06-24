@@ -10,4 +10,16 @@
         <constructor-arg index="0" value="questions.csv"/>
     </bean>
 
+    <bean id="quizService" class="ru.otus.spring.service.QuizServiceImpl">
+        <constructor-arg index="0" ref="questionPoolDao"/>
+    </bean>
+
+    <bean id="printerService" class="ru.otus.spring.service.PrinterServiceImpl">
+    </bean>
+
+    <bean id="readerService" class="ru.otus.spring.service.ReaderServiceImpl">
+        <constructor-arg index="0" ref="quizService"/>
+        <constructor-arg index="1" ref="printerService"/>
+    </bean>
+
 </beans>
