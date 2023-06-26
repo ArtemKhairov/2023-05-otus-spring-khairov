@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class Question {
     private final String question;
+
     private final Answer answer;
 
     public String getQuestion() {

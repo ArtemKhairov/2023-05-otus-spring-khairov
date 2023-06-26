@@ -3,7 +3,6 @@ package ru.otus.spring.dao;
 import ru.otus.spring.domain.Answer;
 import ru.otus.spring.domain.Question;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.InputStream;
@@ -22,13 +21,10 @@ public class CSVReaderDAO implements QuestionDAO {
             InputStream inputStream = CSVReaderDAO.class.getClassLoader().getResourceAsStream(file);
             Scanner scanner = new Scanner(inputStream);
             List<Question> questions = readQuestions(scanner);
-            scanner.close();
-            inputStream.close();
             return questions;
-        } catch (IOException e) {
-            System.out.println(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-        return null;
     }
 
     private List<Question> readQuestions(Scanner scanner) {
