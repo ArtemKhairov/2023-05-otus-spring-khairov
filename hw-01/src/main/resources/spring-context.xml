@@ -17,7 +17,7 @@
     <bean id="printerService" class="ru.otus.spring.service.PrinterServiceImpl">
     </bean>
 
-    <bean id="readerService" class="ru.otus.spring.service.QuestionServiceImpl">
+    <bean id="questionService" class="ru.otus.spring.service.QuestionServiceImpl">
         <constructor-arg index="0" ref="quizService"/>
         <constructor-arg index="1" ref="printerService"/>
     </bean>

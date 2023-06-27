@@ -6,7 +6,7 @@ import ru.otus.spring.service.QuestionService;
 public class Main {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("/spring-context.xml");
-        QuestionService questionService = context.getBean("readerService", QuestionService.class);
+        QuestionService questionService = context.getBean("questionService", QuestionService.class);
         questionService.printQuestions();
         context.close();
     }

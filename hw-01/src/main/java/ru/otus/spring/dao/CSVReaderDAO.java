@@ -8,6 +8,8 @@ import java.util.List;
 import java.io.InputStream;
 import java.util.Scanner;
 
+import static java.util.Objects.isNull;
+
 public class CSVReaderDAO implements QuestionDAO {
     private final String file;
 
@@ -17,11 +19,12 @@ public class CSVReaderDAO implements QuestionDAO {
 
     @Override
     public List<Question> getAll() {
-        try {
-            InputStream inputStream = CSVReaderDAO.class.getClassLoader().getResourceAsStream(file);
-            Scanner scanner = new Scanner(inputStream);
-            List<Question> questions = readQuestions(scanner);
-            return questions;
+        InputStream inputStream = CSVReaderDAO.class.getClassLoader().getResourceAsStream(file);
+        if (isNull(inputStream)) {
+            throw new RuntimeException("Could not open questions file");
+        }
+        try (Scanner scanner = new Scanner(inputStream)) {
+            return readQuestions(scanner);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
