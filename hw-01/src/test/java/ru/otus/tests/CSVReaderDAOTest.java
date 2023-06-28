@@ -10,7 +10,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @DisplayName("CSVReaderDAOTest")
 public class CSVReaderDAOTest {
     private static final int QUESTIONS_COUNT = 5;
+
     private static final String EXIST_FILE = "questions.csv";
+
     private static final String NOT_EXIST = "not-exist-file.csv";
 
     @DisplayName("Test with Existing File")
